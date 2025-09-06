@@ -1,0 +1,267 @@
+
+
+% set tex block for references
+\newcommand*{\englishTOCTitle}{TABLE OF CONTENTS}
+
+\newcommand*{\titleCh}{中文题目}
+\newcommand*{\titleEn}{English  Title}
+
+
+
+\newcommand*{\titleOdd}{大连理工大学博士学位论文}
+
+% \newcommand*{\authorName}{$\blacksquare\blacksquare\blacksquare$}
+\newcommand*{\authorName}{张三}
+
+%\newcommand*{\authorNameEng}{$\blacksquare\blacksquare\blacksquare$}
+\newcommand*{\authorNameEng}{San Zhang}
+
+\newcommand*{\cardNumber}{119120110}
+
+%\newcommand*{\tutorName}{$\blacksquare\blacksquare\blacksquare$}
+\newcommand*{\tutorName}{李四}
+
+%\newcommand*{\tutorNameEng}{$\blacksquare\blacksquare\blacksquare$}
+\newcommand*{\tutorNameEng}{Si Li}
+\newcommand*{\majorName}{机械制造及其自动化}
+\newcommand*{\approveYear}{2025}	% input year like 2025
+\newcommand*{\approveMonth}{09}	% input month like 06
+\newcommand*{\approveDay}{01}	% input day like 25
+\newcommand*{\approveDate}{\approveYear 年 \approveMonth 月 \approveDay 日}
+\newcommand*{\approveLocation}{大连理工大学机械工程学院知方楼-***}
+
+
+% Load required packages and define document settings
+\RequirePackage[left=2.5cm, right=2.5cm, top=3.5cm, bottom=2.5cm,
+headheight = 15 pt,
+headsep=15pt,
+footskip=15pt]{geometry}
+
+
+
+\RequirePackage{graphicx}  
+
+
+% to make figure inside the section
+\RequirePackage{placeins}   
+\RequirePackage{etoolbox}  % hooking program
+\BeforeBeginEnvironment{section}{\FloatBarrier}  % 在 section 之前插入
+\AfterEndEnvironment{section}{\FloatBarrier}  %  在 section 之后插入
+\BeforeBeginEnvironment{subsection}{\FloatBarrier}  % 在 subsection 之前插入
+\AfterEndEnvironment{subsection}{\FloatBarrier}  %  在 subsection 之后插入
+
+
+
+\RequirePackage{booktabs} 
+\RequirePackage{float}  
+\RequirePackage{longtable} 
+\RequirePackage{multirow} 
+\RequirePackage{makecell} 
+\RequirePackage{siunitx}  
+\RequirePackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}  % Define P as a centered column
+
+
+
+\RequirePackage[normalem]{ulem} 
+\RequirePackage{ragged2e}
+\RequirePackage{caption}
+\RequirePackage{blindtext}
+\RequirePackage{amsmath,amssymb,amsfonts}
+
+
+%% set cite style  and bibliography
+\RequirePackage[backend=biber, doi =false, gbpunctin=false, style=gb7714-2015]{biblatex}	% no doi, gbpunctin=faluse -- no // after [C]
+\addbibresource{bib/refs.bib}
+
+
+
+\DefineBibliographyStrings{english}{in={}}	% -- no in after [C]
+\DefineBibliographyStrings{english}{incn={}}	% -- no // after [C]
+
+
+\AtBeginBibliography{%	%use etoolbox package to make change
+	\zihao{5}  % 参考文献列表：五号字
+	\setstretch{1.25}      % 1.25倍行距，  use setspace package
+	\setlength{\itemsep}{0pt}  % 参考文献列表： 条目之间的距离为0
+	\setlength{\parskip}{0pt}  %  参考文献列表：段间距为0
+}
+
+
+\RequirePackage{tabularx} 
+
+% Define autoref names
+\AtBeginDocument{%
+	\def\figureautorefname{图}
+	\def\tableautorefname{表}
+	\def\partautorefname{卷}
+	\def\appendixautorefname{附录}
+	\def\equationautorefname{式}
+	\def\Itemautorefname{列表}
+	\def\chapterautorefname{章}
+	\def\sectionautorefname{节}
+	\def\subsectionautorefname{小节}
+	\def\subsubsectionautorefname{条目}
+	\def\paragraphautorefname{自然段}
+	\def\Hfootnoteautorefname{脚注}
+	\def\AMSautorefname{式}
+	\def\theoremautorefname{理论}
+	\def\pageautorefname{页}
+}
+
+% Footnotes
+\RequirePackage[perpage]{footmisc}	% start numer of footnote with one, not continous with the former page
+
+\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}
+
+% Bilingual Captions
+\RequirePackage{bicaption}
+\captionsetup[figure][bi-first]{name=图}
+\captionsetup[table][bi-first]{name=表}
+\captionsetup[figure][bi-second]{name=Fig.}	% name of abbr of caption of figure
+\captionsetup[table][bi-second]{name=Tab.}	% name of abbr of caption of table
+\captionsetup{justification=centering}
+\captionsetup[bi-second]{listtype+=Eng}
+\captionsetup{labelsep=space} % 将冒号改为空格（效果：图1 标题） 或 labelsep=none % 完全删除分隔符（效果：图1标题）
+\captionsetup[figure]{skip=5pt}   % 控制图的标题与图的间距
+\captionsetup[table]{skip=5pt}    % 控制表的标题与表的间距
+
+
+
+% set distance , not for exact package
+\setlength{\textfloatsep}{10pt}  % distance between figure/table and context
+\setlength{\floatsep}{5pt}      % distance between same floatings
+\setlength{\intextsep}{10pt}      % distance between embedded figure/table and context
+
+
+% Floating Environments for List of Figures and Tables
+\RequirePackage{newfloat}
+\DeclareFloatingEnvironment[fileext=lof2]{figureEng}[Figure][List of Figures]
+\DeclareFloatingEnvironment[fileext=lof2]{tableEng}[Table][List of Tables]
+
+
+% Font settings
+\RequirePackage{fontspec}
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}	% 指定宋体
+
+\setCJKfamilyfont{hwxk}{华文行楷}
+\newcommand{\huawenxingkai}{\CJKfamily{hwxk}}
+
+\setCJKfamilyfont{hwxh}{华文细黑}
+\newcommand{\huawenxihei}{\CJKfamily{hwxh}}
+
+
+
+\RequirePackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
+
+
+
+% Plain Page Style  and Page Style 
+\RequirePackage{fancyhdr}
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[CO]{\zihao{5} \titleOdd}	% 显示学校学位论文+ 五号字
+	\fancyhead[CE]{\zihao{5} \titleCh}	% 显示论文题目+ 五号字
+	\fancyfoot[CO,CE]{\zihao{-5} {- {\thepage} -}}	% use {} to make page number centered and 小五
+	\renewcommand{\headrulewidth}{1pt}
+}
+
+% TOC
+\RequirePackage[titles]{tocloft}
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftbeforechapskip}{0pt}
+\renewcommand{\cftbeforesecskip}{0pt}
+\renewcommand{\cftbeforesubsecskip}{0pt}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand\cftdotsep{1.5}
+
+
+\renewcommand{\cftfigpresnum}{图~}  % “图” + 空格
+\addtolength{\cftfignumwidth}{1em} % 预留“图”字宽度
+
+% 在表目录条目前添加“表 ”
+\renewcommand{\cfttabpresnum}{表~}  % “表” + 空格
+\addtolength{\cfttabnumwidth}{1em} % 预留“表”字宽度
+
+% \begin{wrapfigure} for using in resume with picture
+\RequirePackage{wrapfig} 
+
+% set  TABLE OF CONTENTS
+\makeatletter
+% 定义英文目录标题和输出命令
+\newcommand{\encontentsname}{\englishTOCTitle}
+\newcommand\entableofcontents{%
+	\if@twocolumn\@restonecoltrue\onecolumn\else\@restonecolfalse\fi
+	\chapter*{\encontentsname
+		\@mkboth{\MakeUppercase\encontentsname}{\MakeUppercase\encontentsname}}%
+	\@starttoc{entoc}% 从 .entoc 文件读取
+	\if@restonecol\twocolumn\fi
+}
+% 定义向英文目录添加条目的命令
+\newcommand{\addentoc}[2]{%
+	\addcontentsline{entoc}{#1}{\protect\numberline{\csname the#1\endcsname}#2}%
+}
+\makeatother
+
+
+
+%% 
+\RequirePackage{setspace}	% to set linespread of specifit paragraph 
+
+
+
+% Define CountersF
+\RequirePackage{enumitem}
+\setlist[enumerate]{
+	topsep=0pt,      % 列表与上下文的间距
+	partopsep=0pt,   % 列表在段落顶部时的额外间距
+	itemsep=0pt,     % 项间间距
+	parsep=0pt,      % 段落内间距
+	leftmargin = 0pt,
+	itemindent = 4em,
+}
+
+
+% Chapter Style and do not add blank row in the setting
+\ctexset{
+	chapter/name={,},	%  删除"第X章"中的"第"和"章"
+	chapter/number=\arabic{chapter},
+	chapter/beforeskip=0pt,
+	chapter/afterskip=10pt,
+	chapter/fixskip=true,	
+	section/beforeskip=10pt,
+	section/afterskip=10pt,
+	section/fixskip=true,		
+	subsection/beforeskip=10pt,
+	subsection/afterskip=10pt,
+	subsection/fixskip=true,	
+	chapter/format+=\raggedright\zihao{-3}\heiti,	%小三，黑体，左对齐
+	section/format+=\raggedright\zihao{4},	%四号，黑体，左对齐
+	subsection/format+=\raggedright\zihao{-4},	%小四，黑体，左对齐
+	listfigurename = \centerline{图目录},
+	listtablename = \centerline{表目录},
+	contentsname = \centerline{目录},
+}
+
+
+
+\RequirePackage{xstring}  % XeLaTeX 支持的字符串处理宏包
+
+% 定义命令：将输入文本的每个字符（除空格外）替换为*
+\newcommand{\starify}[1]{%
+	\def\inputtext{#1}% 保存原始文本
+	% 替换所有非空格字符为*（利用正则表达式匹配）
+	\StrRegExpReplace{\inputtext}{[^\s]}{*}[\outputtext]%
+	\outputtext% 输出结果
+}
+
+
+\RequirePackage{hyperref}   
+\hypersetup{linktoc=all, colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black, bookmarksnumbered, bookmarksopen=true}	% or
+
+%\hypersetup{linktoc=all, colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue, bookmarksnumbered, bookmarksopen=true}	% or
