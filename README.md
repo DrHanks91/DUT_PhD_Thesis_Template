@@ -11,6 +11,8 @@
 
 编辑器：TexStudio
 
+文献管理：JabRef
+
 编译方式：Xelatex -> Biber -> Xelatex -> Xelatex。此链路可以在TexStudio配置中更改。
 
 <img width="1091" height="350" alt="image" src="https://github.com/user-attachments/assets/e11ca9cc-4f3b-4505-bd9a-afce8c0962f8" />
