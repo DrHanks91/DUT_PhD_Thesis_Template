@@ -1,0 +1,2 @@
+# DUT_PhD_Thesis_Template
+大连理工大学机械学院博士论文LaTeX模版
